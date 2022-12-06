@@ -12,6 +12,9 @@ public:
     // 菜单功能
     void show_Menu();
 
+    // 退出系统
+    void exitSystem();
+
     // 析构函数
     ~SpeechManager();
 };
