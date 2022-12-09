@@ -2,7 +2,8 @@
 
 SpeechManager::SpeechManager()
 {
-    
+    //初始化容器和属性
+    this->initSpeech();
 }
 
 void SpeechManager::show_Menu()
@@ -23,6 +24,18 @@ void SpeechManager::exitSystem()
     cout << "欢迎下次使用" << endl;
     system("pause");
     exit(0);
+}
+
+void SpeechManager::initSpeech()
+{
+    // 容器都置空
+    this->v1.clear();
+    this->v2.clear();
+    this->vVictory.clear();
+    this->m_Speaker.clear();
+
+    // 初始化比赛的轮数
+    this->m_Index = 1;
 }
 
 SpeechManager::~SpeechManager()
