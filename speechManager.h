@@ -24,6 +24,9 @@ public:
     // 初始化容器和属性
     void initSpeech();
 
+    // 创建12名选手
+    void createSpeaker();
+
     // 成员属性
     // 保存第一轮选手编号的容器
     vector<int> v1;

@@ -2,22 +2,24 @@
 
 SpeechManager::SpeechManager()
 {
-    //初始化容器和属性
+    // 初始化容器和属性
     this->initSpeech();
+
+    // 创建12名选手
+    this->createSpeaker();
 }
 
 void SpeechManager::show_Menu()
 {
     cout << "**************************************" << endl;
-    cout << "**********  欢迎参加演讲比赛  ********" << endl; 	
-    cout << "**********  1、开始演讲比赛  *********" << endl; 	
-    cout << "**********  2、查看往届记录  *********" << endl; 	
-    cout << "**********  3、清空比赛记录  *********" << endl; 	
+    cout << "**********  欢迎参加演讲比赛  ********" << endl;
+    cout << "**********  1、开始演讲比赛  *********" << endl;
+    cout << "**********  2、查看往届记录  *********" << endl;
+    cout << "**********  3、清空比赛记录  *********" << endl;
     cout << "**********  0、退出系比赛统  *********" << endl;
     cout << "**************************************" << endl;
     cout << endl;
 }
-
 
 void SpeechManager::exitSystem()
 {
@@ -38,7 +40,32 @@ void SpeechManager::initSpeech()
     this->m_Index = 1;
 }
 
+/// @brief 创建12名选手
+void SpeechManager::createSpeaker()
+{
+    string nameSeed = "ABCDEFGHIJKL";
+    for (int i = 0; i < nameSeed.size(); i++)
+    {
+        string name = "选手";
+        name += nameSeed[i];
+
+        Speaker sp;
+        sp.m_Name = name;
+
+        for (int j = 0; j < 2; j++)
+        {
+            sp.m_Socre[j] = 0;
+        }
+
+        // 创建选手的编号并放入到v1容器中
+        this->v1.push_back(i + 10001);
+
+        // 选手的编号以及对应的选手放入map容器中
+        this->m_Speaker.insert(make_pair(i + 10001, sp));
+
+    }
+}
+
 SpeechManager::~SpeechManager()
 {
-
 }
