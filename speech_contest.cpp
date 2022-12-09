@@ -4,7 +4,7 @@ int main()
 {
     SpeechManager sm;
 
-    int choice = 0;
+    int choice = 0; // 用于存储用户的输入
 
     while(true)
     {
