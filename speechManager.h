@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include "speaker.h"
+#include <algorithm>
 using namespace std;
 
 class SpeechManager
@@ -17,7 +18,7 @@ public:
 
     // 退出系统
     void exitSystem();
-
+ 
     // 析构函数
     ~SpeechManager();
 
@@ -26,6 +27,15 @@ public:
 
     // 创建12名选手
     void createSpeaker();
+
+
+    // 开始比赛 比赛整个流程控制函数
+    void startSpeech();
+
+    // 抽签函数
+    void speechDraw();
+
+
 
     // 成员属性
     // 保存第一轮选手编号的容器
