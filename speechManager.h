@@ -5,6 +5,10 @@
 #include <map>
 #include "speaker.h"
 #include <algorithm>
+#include <deque>
+#include <functional>
+#include <numeric>
+
 using namespace std;
 
 class SpeechManager
@@ -34,7 +38,9 @@ public:
 
     // 抽签函数
     void speechDraw();
-
+    
+    // 比赛
+    void speechContest();
 
 
     // 成员属性
