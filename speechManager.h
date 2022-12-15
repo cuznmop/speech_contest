@@ -42,6 +42,10 @@ public:
     // 比赛
     void speechContest();
 
+    // 显示得分
+    void showScore();
+    
+
 
     // 成员属性
     // 保存第一轮选手编号的容器
