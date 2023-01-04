@@ -8,6 +8,7 @@
 #include <deque>
 #include <functional>
 #include <numeric>
+#include <fstream>
 
 using namespace std;
 
@@ -44,6 +45,9 @@ public:
 
     // 显示得分
     void showScore();
+
+    // 保存分数
+    void saveRecord();
     
 
 

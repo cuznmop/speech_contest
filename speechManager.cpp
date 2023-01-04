@@ -77,7 +77,7 @@ void SpeechManager::startSpeech()
 
     // 3.显示晋级结果
     this->showScore();
-    
+
     // 第二轮开始比赛
     this->m_Index++;
 
@@ -93,6 +93,11 @@ void SpeechManager::startSpeech()
     this->m_Index = 1;
 
     // 4.保存最终结果
+    this->saveRecord();
+
+    cout << "本届比赛完毕! " << endl;
+    system("pause");
+    system("cls");
 }
 
 // 抽签函数
@@ -236,6 +241,23 @@ void SpeechManager::showScore()
     system("pause");
     system("cls");
     this->show_Menu();
+}
+
+// 保存分数
+void SpeechManager::saveRecord()
+{
+    ofstream ofs;
+    ofs.open("speech.csv", ios::out | ios::app); // 用追加的方式写文件
+
+    // 将每个人的数据写到文件中
+    for (vector<int>::iterator it = this->vVictory.begin(); it != this->vVictory.end(); it++)
+    {
+        ofs << *it << "," << this->m_Speaker[*it].m_Socre[1] << ",";
+    }
+    ofs << endl;
+
+    ofs.close();
+    cout << "记录已经保存" << endl;
 }
 
 // 析构函数
