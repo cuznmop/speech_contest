@@ -24,7 +24,7 @@ int main()
             case 1:  // 开始比赛
                 sm.startSpeech();
                 break;
-            case 2:  // 查看往届记录
+            case 2:  // 查看往届记录 
                 break;
             case 3:  // 清空比赛记录  
                 break;
