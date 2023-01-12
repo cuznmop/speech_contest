@@ -260,6 +260,47 @@ void SpeechManager::saveRecord()
     cout << "记录已经保存" << endl;
 }
 
+
+// 读取记录
+void SpeechManager::loadRecord()
+{
+    ifstream ifs("speech.csv", ios::in);  // 读文件
+    if (!ifs.is_open())
+    {
+        this->fileIsEmpty = true;
+        cout << "文件不存在" << endl;
+        ifs.close();
+        return;
+    }
+
+    // 文件清空情况
+    char ch;
+    ifs >> ch;
+    if (ifs.eof())
+    {
+        cout << "文件为空" << endl;
+        this->fileIsEmpty = true;
+    }
+
+    // 文件不为空
+    this->fileIsEmpty = false;
+
+    ifs.putback(ch); //将上面读取的单个字符 放回来
+
+    string data;
+
+    while(ifs >> data)
+    {
+        cout << data << endl;
+    }
+
+    ifs.close();
+
+
+}
+
+
+
 // 析构函数
 SpeechManager::~SpeechManager()
 {
