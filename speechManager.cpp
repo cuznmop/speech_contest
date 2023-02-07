@@ -7,6 +7,10 @@ SpeechManager::SpeechManager()
 
     // 创建12名选手
     this->createSpeaker();
+
+    // 加载往届记录
+    this->loadRecord();
+
 }
 
 void SpeechManager::show_Menu()
