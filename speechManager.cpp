@@ -268,6 +268,11 @@ void SpeechManager::saveRecord()
 // 读取记录
 void SpeechManager::loadRecord()
 {
+    vector<string> v;
+    int pos = -1;
+    int start = 0;
+    int index = 0;
+    // int print_time = 0;
     ifstream ifs("speech.csv", ios::in);  // 读文件
     if (!ifs.is_open())
     {
@@ -295,11 +300,36 @@ void SpeechManager::loadRecord()
 
     while(ifs >> data)
     {
-        cout << data << endl;
+        // cout << print_time++ << endl;
+        pos = -1;
+        start = 0;
+        v.clear();
+        while (true)
+        {
+            pos = data.find(",", start);
+            if(pos == -1)
+            {
+                // 没有找到的情况
+                break;
+            }
+            string temp = data.substr(start, pos - start);
+            // cout << temp << endl;
+            v.push_back(temp);
+            start = pos + 1;
+        }
+        
+        this->m_Record.insert(make_pair(index, v));
+        index++;
     }
+    
 
     ifs.close();
 
+    for(map<int, vector<string>>::iterator it=this->m_Record.begin(); it!=this->m_Record.end(); it++)
+    {
+        cout << it->first << "冠军编号: " << it->second[0] 
+                            << " 分数: " << it->second[1] << endl;
+    }
 
 }
 
