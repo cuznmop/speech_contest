@@ -325,15 +325,29 @@ void SpeechManager::loadRecord()
 
     ifs.close();
 
-    for(map<int, vector<string>>::iterator it=this->m_Record.begin(); it!=this->m_Record.end(); it++)
-    {
-        cout << it->first << "冠军编号: " << it->second[0] 
-                            << " 分数: " << it->second[1] << endl;
-    }
+    // for(map<int, vector<string>>::iterator it=this->m_Record.begin(); it!=this->m_Record.end(); it++)
+    // {
+    //     cout << it->first << "冠军编号: " << it->second[0] 
+    //                         << " 分数: " << it->second[1] << endl;
+    // }
 
 }
 
 
+// 显示往届记录
+void SpeechManager::showRecord()
+{
+    for(int i=0; i<this->m_Record.size(); i++)
+    {
+        cout << "第" << i+1 << "届 "
+             <<  "冠军编号: " << this->m_Record[i][0] << " 得分: " << this->m_Record[i][1] << " "
+             <<  "亚军编号: " << this->m_Record[i][2] << " 得分: " << this->m_Record[i][3] << " "
+             <<  "季军编号: " << this->m_Record[i][4] << " 得分: " << this->m_Record[i][5] << endl;
+    }
+
+    system("pause");
+    system("cls");
+}
 
 // 析构函数
 SpeechManager::~SpeechManager()
