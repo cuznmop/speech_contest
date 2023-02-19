@@ -42,6 +42,9 @@ void SpeechManager::initSpeech()
 
     // 初始化比赛的轮数
     this->m_Index = 1;
+
+    // 初始化记录容器
+    this->m_Record.clear();
 }
 
 /// @brief 创建12名选手
@@ -98,6 +101,17 @@ void SpeechManager::startSpeech()
 
     // 4.保存最终结果
     this->saveRecord();
+
+    // 重置比赛, 获取记录
+    // 初始化容器和属性
+    this->initSpeech();
+
+    // 创建12名选手
+    this->createSpeaker();
+
+    // 加载往届记录
+    this->loadRecord();
+
 
     cout << "本届比赛完毕! " << endl;
     system("pause");
@@ -262,6 +276,9 @@ void SpeechManager::saveRecord()
 
     ofs.close();
     cout << "记录已经保存" << endl;
+
+    // 更改文件不为空的状态
+    this->fileIsEmpty = false;
 }
 
 
@@ -277,7 +294,7 @@ void SpeechManager::loadRecord()
     if (!ifs.is_open())
     {
         this->fileIsEmpty = true;
-        cout << "文件不存在" << endl;
+        // cout << "文件不存在" << endl;
         ifs.close();
         return;
     }
@@ -287,7 +304,7 @@ void SpeechManager::loadRecord()
     ifs >> ch;
     if (ifs.eof())
     {
-        cout << "文件为空" << endl;
+        // cout << "文件为空" << endl;
         this->fileIsEmpty = true;
     }
 
@@ -337,12 +354,19 @@ void SpeechManager::loadRecord()
 // 显示往届记录
 void SpeechManager::showRecord()
 {
-    for(int i=0; i<this->m_Record.size(); i++)
+    if (this->fileIsEmpty)
     {
-        cout << "第" << i+1 << "届 "
-             <<  "冠军编号: " << this->m_Record[i][0] << " 得分: " << this->m_Record[i][1] << " "
-             <<  "亚军编号: " << this->m_Record[i][2] << " 得分: " << this->m_Record[i][3] << " "
-             <<  "季军编号: " << this->m_Record[i][4] << " 得分: " << this->m_Record[i][5] << endl;
+        cout << "文件为空或文件不存在!" << endl;
+    }
+    else
+    {
+        for(int i=0; i<this->m_Record.size(); i++)
+        {
+            cout << "第" << i+1 << "届 "
+                <<  "冠军编号: " << this->m_Record[i][0] << " 得分: " << this->m_Record[i][1] << " "
+                <<  "亚军编号: " << this->m_Record[i][2] << " 得分: " << this->m_Record[i][3] << " "
+                <<  "季军编号: " << this->m_Record[i][4] << " 得分: " << this->m_Record[i][5] << endl;
+        }
     }
 
     system("pause");
